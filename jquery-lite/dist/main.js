@@ -86,14 +86,25 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/dom_node_collection.js":
+/*!************************************!*\
+  !*** ./src/dom_node_collection.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("class DOMNodeCollection {\n  constructor(nodeList) {\n    this.nodeList = nodeList;\n    this.render();\n  }\n\n  render() {\n    return this.nodeList;\n  }\n\n};\n\nmodule.exports = DOMNodeCollection;\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("window.$l = (arg) => {\n  const nodeList = document.querySelectorAll(arg);\n  const nodeArray = Array.from(nodeList);\n  return nodeArray\n}\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection */ \"./src/dom_node_collection.js\");\n\nwindow.$l = (arg) => {\n  if (arg instanceof HTMLElement){\n    console.log(\"if condition hit\");\n    return new DOMNodeCollection([arg]);\n  } else {\n    console.log(\"else condition hit\")\n    const nodeList = document.querySelectorAll(arg);\n    const nodeArray = Array.from(nodeList);\n    return new DOMNodeCollection(nodeArray);\n  }\n};\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
