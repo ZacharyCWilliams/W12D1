@@ -20,6 +20,10 @@ class DOMNodeCollection {
     };
   }
 
+  empty() {
+    this.html("")
+  }
+
 };
 
 module.exports = DOMNodeCollection;
